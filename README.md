@@ -74,9 +74,18 @@ bash ./scripts/download_triangulation_files.sh
 ### Customized data preparation
 1. Cast the videos as images, put them under ./datafiles/customized/images.
 
-2. Run `python ./scripts/preprocess/customized/generate_frame_masks.py` to generate dynamic masks of images.
+2. Run `python ./scripts/preprocess/customized/generate_frame_masks.py` to generate dynamic masks of images with MaskRcnn.
 
-3. Run `COLMAP` with dynamic masks to generate raw camera poses.
+3. Run `local_colmap.sh` with dynamic masks to generate raw camera poses.
+
+4. Run `point2obj.py` to generate customized.obj and `npy2txt.py` to generate customized.matrices.txt. For customized.intrinsics.txt, just copy it form sparse/0/camera.txt.
+
+5. Run `python ./scripts/preprocess/customized/generate_frame_midas.py`. This requires `trimesh` to be installed (`pip install trimesh` should do the trick). This script projects the triangulated 3D points to calibrate camera translation scales.
+
+6. Run `python ./scripts/preprocess/customized/generate_flows.py` to generate optical flows between pairs of images. This stage requires `RAFT`, which is included as a submodule in this repo.
+
+
+7. Run `python ./scripts/preprocess/customized/generate_sequence_midas.py` to pack camera calibrations and images into training batches.
 
 ### Davis data preparation
 
