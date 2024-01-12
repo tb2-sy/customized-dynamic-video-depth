@@ -71,6 +71,7 @@ We provide the triangulation results [here](https://drive.google.com/file/d/1U07
 ```
 bash ./scripts/download_triangulation_files.sh
 ```
+### Customized data preparation
 
 ### Davis data preparation
 
