@@ -72,6 +72,11 @@ We provide the triangulation results [here](https://drive.google.com/file/d/1U07
 bash ./scripts/download_triangulation_files.sh
 ```
 ### Customized data preparation
+1. Cast the videos as images, put them under ./datafiles/customized/images.
+
+2. Run `python ./scripts/preprocess/customized/generate_frame_masks.py` to generate dynamic masks of images.
+
+3. Run `COLMAP` with dynamic masks to generate raw camera poses.
 
 ### Davis data preparation
 
